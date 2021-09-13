@@ -5,12 +5,12 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FakeStore</title>
-  <link rel="stylesheet" href="./css/style.css" />
+  <title>Buy Latest Products</title>
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
     integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
-
+  <!-- custom css -->
+  <link rel="stylesheet" href="./css/style.css" />
   <!-- google Montserrat  font  -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -20,19 +20,25 @@
 <body>
   <header></header>
   <main class="main">
-    <div class="search-field">
+    <!-- detail of a product -->
+    <div id="product-detail">
+      <p id="detail" class="pt-2"></p>
+  </div>
+  
+    <div class="search-field-container">
       <div class="search-box">
-        <input id="input-field" class="search-field" type="text" />
+        <input id="input-field" class="search-field" type="text" placeholder="write a product name" />
         <button type="button" class="btn btn-primary search-button" data-toggle="button" aria-pressed="false"
           autocomplete="off" id="search-btn" onclick="loadProducts()">
           Search
         </button>
       </div>
     </div>
+
     <div class="row">
       <div class="col-md-9 col-lg-9 col-sm-7">
         <div id="all-products" class="">
-          <h1></h1>
+          <!-- <h1></h1> -->
         </div>
       </div>
       <div class="col-md-3 col-lg-3 col-sm-5 cart-main">
@@ -50,7 +56,7 @@
             <tbody>
               <tr>
                 <th>Total Added-Products:</th>
-                <td>$ <span id="total-Products">0</span></td>
+                <td> <span id="total-Products"> 0</span></td>
                 <td></td>
                 <td></td>
               </tr>
