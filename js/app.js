@@ -8,7 +8,6 @@ loadProducts();
 
 // show all product in UI
 const showProducts = (products) => {
-	console.log(products);
 	const allProducts = products.map((pd) => pd);
 	for (const product of allProducts) {
 		const image = product.image;
@@ -19,30 +18,38 @@ const showProducts = (products) => {
         <div>
           <img class="product-image" src=${image}></img>
         </div>
-        <h3>${product.title}</h3>
+        <h3>${product.title.slice(0, 30)}</h3>
         <p>Category: ${product.category}</p>
-        <p> Ratings: <span class="font-weight-bold"> ${product.rating.rate}</span></p>
-        <p> Rated by <span class="font-weight-bold"> ${product.rating.count}</span> people</p>
+        <p> Ratings: <span class="font-weight-bold"> ${
+			product.rating.rate
+		}</span></p>
+        <p> Rated by <span class="font-weight-bold"> ${
+			product.rating.count
+		}</span> people</p>
         <h2>Price: $ ${product.price}</h2>
-        <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-success">add to cart</button>
-        <button id="details-btn" onclick="loadDetail(${product.id})" class="btn btn-danger">Details</button></div>
+        <button onclick="addToCart(${product.id},${
+			product.price
+		})" id="addToCart-btn" class="buy-now btn btn-success">add to cart</button>
+        <button id="details-btn" onclick="loadDetail(${
+			product.id
+		})" class="btn btn-danger">Details</button></div>
       `;
 		document.getElementById('all-products').appendChild(div);
 	}
 };
- //load detail of a product
+//load product detail
 const loadDetail = (productId) => {
 	const url = `https://fakestoreapi.com/products/${productId}`;
 	fetch(url)
 		.then((response) => response.json())
-		.then((data) => productDetail(data.description));
+		.then((data) => productDetail(data));
 };
-
-//display detail of a product
-const productDetail = (description) => {
+//detail of a product
+const productDetail = (data) => {
 	document.getElementById('product-detail').style.display = 'block';
 	const detail = document.getElementById('detail');
-	detail.innerText = description;
+	document.getElementById('title').innerText = `${data.title.slice(0, 30)}`;
+	detail.innerText = `${data.description.slice(0, 180)}`;
 };
 
 let count = 0;
