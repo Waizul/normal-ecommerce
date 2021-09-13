@@ -30,7 +30,7 @@ const showProducts = (products) => {
 		document.getElementById('all-products').appendChild(div);
 	}
 };
-
+ //load detail of a product
 const loadDetail = (productId) => {
 	const url = `https://fakestoreapi.com/products/${productId}`;
 	fetch(url)
@@ -38,6 +38,7 @@ const loadDetail = (productId) => {
 		.then((data) => productDetail(data.description));
 };
 
+//display detail of a product
 const productDetail = (description) => {
 	document.getElementById('product-detail').style.display = 'block';
 	const detail = document.getElementById('detail');
